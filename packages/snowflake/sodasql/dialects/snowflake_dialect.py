@@ -30,7 +30,7 @@ class SnowflakeDialect(Dialect):
             self.schema = parser.get_str_required_env('schema')
             self.role = parser.get_str_optional('role')
             self.passcode_in_password = parser.get_bool_optional('passcode_in_password', False)
-            self.private_key = parser.get_str_optional('private_key')
+            self.private_key = parser.get_object_optional('private_key')
             self.client_prefetch_threads = parser.get_int_optional('client_prefetch_threads', 4)
             self.client_session_keep_alive = parser.get_bool_optional('client_session_keep_alive', False)
             self.authenticator = parser.get_str_optional('authenticator', 'snowflake')
@@ -111,10 +111,10 @@ class SnowflakeDialect(Dialect):
         return self.escape_metacharacters(regex)
 
     def qualify_column_name(self, column_name: str):
-        return f'{column_name}'
+        return f'"{column_name}"'
 
     def qualify_table_name(self, table_name: str) -> str:
-        return f'{table_name}'
+        return f'"{table_name}"'
 
     def is_connection_error(self, exception):
         if exception is None or exception.errno is None:

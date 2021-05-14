@@ -6,6 +6,8 @@
 #
 appdirs==1.4.4
     # via virtualenv
+atomicwrites==1.4.0
+    # via pytest
 attrs==19.3.0
     # via
     #   pytest
@@ -23,6 +25,8 @@ click==7.1.2
 colorama==0.4.4
     # via
     #   cli-ui
+    #   pytest
+    #   tox
     #   twine
 contextlib2==0.6.0.post1
     # via schema
@@ -87,6 +91,10 @@ python-dateutil==2.8.1
     # via faker
 python-dotenv==0.13.0
     # via -r dev-requirements.in
+pywin32-ctypes==0.2.0
+    # via keyring
+pywin32==227
+    # via docker
 readme-renderer==28.0
     # via twine
 requests-toolbelt==0.9.1

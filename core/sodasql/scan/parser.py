@@ -124,6 +124,9 @@ class Parser:
     def get_str_optional(self, property_name: str, default=None):
         return self._get(property_name, str, False, default)
 
+    def get_object_optional(self, property_name: str, default=None):
+        return self._get(property_name, object, False, default)
+
     def get_str_required_env(self, property_name: str):
         return self._get(property_name, str, True)
 
@@ -203,6 +206,8 @@ class Parser:
                     return str(value)
                 if return_type == float:
                     return float(value)
+                if return_type == object:
+                    return value
                 raise ValueError(str(type(value)))
             except ValueError as e:
                 self.error(f'Invalid {property_name}: Expected {str(return_type)}, but was {str(value)}: {str(e)}',
