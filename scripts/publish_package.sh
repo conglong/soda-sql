@@ -5,7 +5,7 @@ cd core
 echo "Publishing core"
 rm -fr dist
 python setup.py sdist
-twine upload --repository testpypi dist/*
+twine upload --repository gitlab dist/*
 popd
 
 cd packages
@@ -16,6 +16,6 @@ do
   cd $pack
   rm -fr dist
   python setup.py sdist
-  twine upload --repository testpypi dist/*
+  twine upload --repository gitlab dist/*
   popd
 done
